@@ -8,7 +8,7 @@
 'use strict';
 
 /* ── 1. CONSTANTS & VARIABLES (ES6 const / let) ─────── */
-const API = 'http://localhost:3000/api';
+const API = 'https://projectskillspire.onrender.com/api';
 const PER_PAGE = 6;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -504,8 +504,8 @@ const enroll = async (skillId, skillTitle) => {
 
   // 🔗 OPEN LINK
   // FIRST: call backend to save enroll
-await fetch("http://localhost:3000/enroll-skill", {
-  method: "POST",
+await fetch(`${API}/enroll-skill`, {
+   method: "POST",
   headers: {
     "Content-Type": "application/json",
     "Authorization": `Bearer ${state.token}`
@@ -904,8 +904,8 @@ document.getElementById("jobApplyForm").addEventListener("submit", async (e) => 
   formData.append("resume", file);
   formData.append("job", job);
 
-  await fetch("http://localhost:3000/apply-job", {
-    method: "POST",
+await fetch(`${API}/apply-job`, {
+   method: "POST",
     headers: {
       "Authorization": `Bearer ${state.token}`
     },
