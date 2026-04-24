@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSpire — Elevate Your Career</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#home" class="nav-logo" data-nav="home">
+      <span class="logo-hex">⬡</span>Skill<em>Spire</em>
+    </a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home"    class="nav-link active" data-nav="home">Home</a></li>
+      <li><a href="#skills"  class="nav-link" data-nav="skills">Skills</a></li>
+      <li><a href="#jobs"    class="nav-link" data-nav="jobs">Jobs</a></li>
+      <li><a href="#about"   class="nav-link" data-nav="about">About</a></li>
+      <li><a href="#contact" class="nav-link" data-nav="contact">Contact</a></li>
+      <li class="nav-auth-wrap" id="navAuth">
+        <button class="btn btn-ghost" onclick="showModal('loginModal')">Login</button>
+        <button class="btn btn-primary" onclick="showModal('signupModal')">Sign Up</button>
+      </li>
+      <li class="nav-user-wrap hidden" id="navUser">
+        <div class="user-pill" onclick="toggleUserMenu()">
+          <span class="user-avatar" id="userAvatar">U</span>
+          <span id="userName">User</span>
+          <span class="chevron">▾</span>
+        </div>
+        <div class="user-dropdown" id="userDropdown">
+          <a class="drop-item" data-nav="dashboard">⬡ Dashboard</a>
+          <div class="drop-divider"></div>
+          <button class="drop-item drop-logout" onclick="logout()">Sign Out</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════
+     MAIN
+═══════════════════════════════════════════════════════ -->
+<main id="appMain">
+
+<!-- ────────────────────────────────────────────────────
+     PAGE: HOME
+──────────────────────────────────────────────────── -->
+<section class="page active" id="page-home">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-bg">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge anim" style="--d:.1s">
+        <span class="badge-dot"></span>42,000+ learners growing their careers
+      </div>
+      <h1 class="hero-title anim" style="--d:.2s">
+        Skills that<br/><em>spire</em> you<br/>higher.
+      </h1>
+      <p class="hero-sub anim" style="--d:.35s">
+        Structured learning paths, real job connections, and progress tracking — all in one serene workspace built for serious growth.
+      </p>
+      <div class="hero-cta anim" style="--d:.5s">
+        <button class="btn btn-white btn-lg" onclick="navigate('skills')">Explore Skills</button>
+        <button class="btn btn-outline-white btn-lg" onclick="navigate('jobs')">Browse Jobs →</button>
+      </div>
+      <div class="hero-stats anim" style="--d:.65s">
+        <div class="hstat"><span class="hstat-n" data-target="8200">0</span><span class="hstat-l">Courses</span></div>
+        <div class="hstat-sep"></div>
+        <div class="hstat"><span class="hstat-n" data-target="1400">0</span><span class="hstat-l">Companies</span></div>
+        <div class="hstat-sep"></div>
+        <div class="hstat"><span class="hstat-n" data-target="97">0</span><span class="hstat-l">% Satisfaction</span></div>
+      </div>
+    </div>
+    <div class="hero-visual anim-right" style="--d:.4s">
+      <div class="hv-ring r1"></div>
+      <div class="hv-ring r2"></div>
+      <div class="hv-ring r3"></div>
+      <div class="hv-core">📈</div>
+      <div class="hf-card hf-top">
+        <span class="hf-icon">⚡</span>
+        <div class="hf-body">
+          <div class="hf-name">JavaScript</div>
+          <div class="hf-bar"><div class="hf-fill" style="width:78%"></div></div>
+          <div class="hf-pct">78% complete</div>
+        </div>
+      </div>
+      <div class="hf-card hf-bot">
+        <span class="hf-icon">🎨</span>
+        <div class="hf-body">
+          <div class="hf-name">UI/UX Design</div>
+          <div class="hf-bar"><div class="hf-fill" style="width:52%"></div></div>
+          <div class="hf-pct">52% complete</div>
+        </div>
+      </div>
+      <div class="hf-badge-card">
+        <div class="hf-badge-ico">🏆</div>
+        <div class="hf-badge-txt">React Certified!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured Skills -->
+  <section class="home-sec bg-alt">
+    <div class="container">
+      <div class="sec-hdr">
+        <div class="sec-tag">Popular Paths</div>
+        <h2 class="sec-title">Top skills employers want</h2>
+        <p class="sec-desc">Hand-curated courses matched to real hiring demand across every tech discipline.</p>
+      </div>
+      <div class="feat-grid" id="homeFeatSkills">
+        <div class="skel"></div><div class="skel"></div><div class="skel"></div>
+      </div>
+      <div class="sec-cta">
+        <button class="btn btn-secondary btn-lg" onclick="navigate('skills')">View all 200+ skills →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section class="home-sec">
+    <div class="container">
+      <div class="sec-hdr">
+        <div class="sec-tag">Process</div>
+        <h2 class="sec-title">How SkillSpire works</h2>
+        <p class="sec-desc">Three steps from where you are to where you want to be.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-no">01</div>
+          <div class="step-ico">🎯</div>
+          <h3>Choose your path</h3>
+          <p>Pick from curated skill tracks designed around real job market demand across 8 categories.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-no">02</div>
+          <div class="step-ico">📚</div>
+          <h3>Learn at your pace</h3>
+          <p>Structured lessons with live progress bars, milestone badges, and a personal dashboard.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-no">03</div>
+          <div class="step-ico">🚀</div>
+          <h3>Land your role</h3>
+          <p>Connect directly to job listings matched to your earned skills and career direction.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="home-sec bg-alt">
+    <div class="container">
+      <div class="sec-hdr">
+        <div class="sec-tag">Stories</div>
+        <h2 class="sec-title">Learners who levelled up</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"SkillSpire's JavaScript track was the clearest path I found. Within 3 months I had my first dev role."</p>
+          <div class="testi-author">
+            <div class="testi-av" style="background:#e4eff7;color:#2c4f7c">AK</div>
+            <div><strong>Arjun Kumar</strong><span>Frontend Dev @ Infosys</span></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"The job board showed me listings that actually matched what I was learning. Landed a contract in 6 weeks."</p>
+          <div class="testi-author">
+            <div class="testi-av" style="background:#d6f0e2;color:#2d6a4f">SP</div>
+            <div><strong>Sara Patel</strong><span>Data Analyst @ TCS</span></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p>"Clean interface, no fluff. The progress tracker kept me accountable while balancing a full-time job."</p>
+          <div class="testi-author">
+            <div class="testi-av" style="background:#f0e8db;color:#5c5346">MR</div>
+            <div><strong>Marcus Reid</strong><span>DevOps Eng @ Wipro</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Ready to spire higher?</h2>
+      <p>Join 42,000+ learners building careers that matter. Free to start, always.</p>
+      <div class="cta-btns">
+        <button class="btn btn-white btn-lg" onclick="showModal('signupModal')">Create Free Account</button>
+        <button class="btn btn-outline-white btn-lg" onclick="navigate('skills')">Browse Skills</button>
+      </div>
+    </div>
+  </section>
+
+</section><!-- /page-home -->
+
+
+<!-- ────────────────────────────────────────────────────
+     PAGE: SKILLS
+──────────────────────────────────────────────────── -->
+<section class="page" id="page-skills">
+
+  <div class="page-header">
+    <div class="container">
+      <div class="ph-crumb"><span class="bc-link" data-nav="home">Home</span> / Skills</div>
+      <h1 class="page-title">Skill Library</h1>
+      <p class="page-sub">Explore 200+ structured learning paths across every discipline</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="filter-bar">
+      <div class="search-wrap">
+        <span class="search-ico">⌕</span>
+        <input type="text" id="skillSearch" class="search-inp" placeholder="Search skills, topics, categories…" autocomplete="off" />
+        <button class="search-clear hidden" id="skillSearchClear" onclick="clearSkillSearch()">✕</button>
+      </div>
+      <div class="filter-rows">
+        <div class="filter-row">
+          <span class="filter-lbl">Category:</span>
+          <div class="pills" id="skillCatFilter">
+            <button class="pill active" data-cat="all">All</button>
+            <button class="pill" data-cat="Programming">Programming</button>
+            <button class="pill" data-cat="Frontend">Frontend</button>
+            <button class="pill" data-cat="Backend">Backend</button>
+            <button class="pill" data-cat="Database">Database</button>
+            <button class="pill" data-cat="Data">Data Science</button>
+            <button class="pill" data-cat="Design">Design</button>
+            <button class="pill" data-cat="DevOps">DevOps</button>
+          </div>
+        </div>
+        <div class="filter-row">
+          <span class="filter-lbl">Level:</span>
+          <div class="pills" id="skillLvlFilter">
+            <button class="pill active" data-lvl="all">All Levels</button>
+            <button class="pill" data-lvl="Beginner">Beginner</button>
+            <button class="pill" data-lvl="Intermediate">Intermediate</button>
+            <button class="pill" data-lvl="Advanced">Advanced</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="results-info" id="skillResultsInfo"></div>
+    <div class="skills-grid" id="skillsGrid"><div class="loading-ph">Loading skills…</div></div>
+    <div class="pagination" id="skillsPagination"></div>
+  </div>
+
+</section><!-- /page-skills -->
+
+
+<!-- ────────────────────────────────────────────────────
+     PAGE: JOBS
+──────────────────────────────────────────────────── -->
+<section class="page" id="page-jobs">
+
+  <div class="page-header">
+    <div class="container">
+      <div class="ph-crumb"><span class="bc-link" data-nav="home">Home</span> / Jobs</div>
+      <h1 class="page-title">Job Board</h1>
+      <p class="page-sub">Real opportunities matched to your growing skill set</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="filter-bar">
+      <div class="search-wrap">
+        <span class="search-ico">⌕</span>
+        <input type="text" id="jobSearch" class="search-inp" placeholder="Job title, company, or skill…" autocomplete="off" />
+        <button class="search-clear hidden" id="jobSearchClear" onclick="clearJobSearch()">✕</button>
+      </div>
+      <div class="filter-rows">
+        <div class="filter-row">
+          <span class="filter-lbl">Type:</span>
+          <div class="pills" id="jobTypeFilter">
+            <button class="pill active" data-type="all">All Types</button>
+            <button class="pill" data-type="Full-time">Full-time</button>
+            <button class="pill" data-type="Part-time">Part-time</button>
+            <button class="pill" data-type="Contract">Contract</button>
+            <button class="pill" data-type="Internship">Internship</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="results-info" id="jobResultsInfo"></div>
+    <div class="jobs-list" id="jobsList"><div class="loading-ph">Loading jobs…</div></div>
+    <div class="pagination" id="jobsPagination"></div>
+  </div>
+
+</section><!-- /page-jobs -->
+
+
+<!-- ────────────────────────────────────────────────────
+     PAGE: ABOUT
+──────────────────────────────────────────────────── -->
+<section class="page" id="page-about">
+
+  <div class="page-header">
+    <div class="container">
+      <div class="ph-crumb"><span class="bc-link" data-nav="home">Home</span> / About</div>
+      <h1 class="page-title">About SkillSpire</h1>
+      <p class="page-sub">A platform born from the belief that learning should feel like growth, not grind</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Mission block -->
+    <div class="about-mission">
+      <div class="about-text">
+        <div class="sec-tag" style="display:inline-block;margin-bottom:.8rem">Our Mission</div>
+        <h2>Close the gap between aspiration and achievement.</h2>
+        <p>SkillSpire exists to give every worker — regardless of background — a clear, structured, beautifully designed path from where they are to where they want to be. We believe great software can be both technically rigorous and genuinely human.</p>
+        <p>Built as a full-stack academic project, SkillSpire demonstrates Node.js, Express, MongoDB, JWT authentication, Socket.IO, and modern ES6+ JavaScript working in harmony.</p>
+        <div class="values-list">
+          <div class="value-item">
+            <span class="val-ico">🌿</span>
+            <div>
+              <strong>Growth-first</strong>
+              <p>Every feature is designed to advance your learning journey, not distract from it.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="val-ico">🎯</span>
+            <div>
+              <strong>Precision</strong>
+              <p>Curated content matched to real hiring data — no noise, no filler courses.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="val-ico">🤝</span>
+            <div>
+              <strong>Connection</strong>
+              <p>We bridge the gap between structured learning and real employment opportunities.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="val-ico">🔒</span>
+            <div>
+              <strong>Security</strong>
+              <p>JWT auth, bcrypt hashing, and role-based access keep your data safe at every step.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-visual-wrap">
+        <div class="about-visual">
+          <div class="av-center"><span>⬡</span><small>Full Stack</small></div>
+          <div class="av-node n1">⚡ Node.js</div>
+          <div class="av-node n2">🍃 MongoDB</div>
+          <div class="av-node n3">🔐 JWT</div>
+          <div class="av-node n4">💬 Socket.IO</div>
+          <div class="av-node n5">⚙️ Express</div>
+          <div class="av-node n6">🎨 Frontend</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="about-tech-section">
+      <div class="sec-hdr" style="text-align:left;margin-bottom:1.5rem">
+        <div class="sec-tag">Technology</div>
+        <h2 class="sec-title">Built with modern tools</h2>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tc-icon">🟢</div>
+          <div class="tc-body">
+            <strong>Node.js</strong>
+            <p>Core runtime — uses <code>http</code>, <code>fs</code>, <code>EventEmitter</code> modules as per syllabus</p>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tc-icon">⚡</div>
+          <div class="tc-body">
+            <strong>Express.js</strong>
+            <p>MVC architecture — Router, middleware chain, global error handling</p>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tc-icon">🍃</div>
+          <div class="tc-body">
+            <strong>MongoDB + Mongoose</strong>
+            <p>4 collections with CRUD operations, pagination, and virtual methods</p>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tc-icon">🔐</div>
+          <div class="tc-body">
+            <strong>JWT + bcrypt</strong>
+            <p>Token authentication, 12-round password hashing, RBAC middleware</p>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tc-icon">💬</div>
+          <div class="tc-body">
+            <strong>Socket.IO</strong>
+            <p>Real-time event system for live chat and help features</p>
+          </div>
+        </div>
+        <div class="tech-card">
+          <div class="tc-icon">🎨</div>
+          <div class="tc-body">
+            <strong>HTML5 + CSS3 + JS</strong>
+            <p>SPA frontend with ES6+, Fetch API, DOM manipulation, Async/Await</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="about-stats-row">
+      <div class="astat"><span>42k+</span><p>Active Learners</p></div>
+      <div class="astat"><span>200+</span><p>Skill Courses</p></div>
+      <div class="astat"><span>1,400+</span><p>Partner Companies</p></div>
+      <div class="astat"><span>97%</span><p>Satisfaction Rate</p></div>
+    </div>
+
+    <!-- Team -->
+    <div class="about-team-section">
+      <div class="sec-hdr">
+        <div class="sec-tag">Team</div>
+        <h2 class="sec-title">The people behind SkillSpire</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-av" style="background:linear-gradient(135deg,#e4eff7,#d6f0e2)">👩‍💻</div>
+          <strong>Priya Sharma</strong>
+          <span>Full Stack Lead</span>
+          <p>Node.js · React · MongoDB</p>
+        </div>
+        <div class="team-card">
+          <div class="team-av" style="background:linear-gradient(135deg,#f0e8db,#ddd0bc)">👨‍🎨</div>
+          <strong>Rohan Mehta</strong>
+          <span>UI/UX Designer</span>
+          <p>Figma · CSS · Motion</p>
+        </div>
+        <div class="team-card">
+          <div class="team-av" style="background:linear-gradient(135deg,#d6f0e2,#aadcbc)">👩‍🔬</div>
+          <strong>Aisha Khan</strong>
+          <span>Backend Architect</span>
+          <p>Express · JWT · DevOps</p>
+        </div>
+        <div class="team-card">
+          <div class="team-av" style="background:linear-gradient(135deg,#c0d9ec,#91b8d9)">👨‍📊</div>
+          <strong>Dev Patel</strong>
+          <span>Data Engineer</span>
+          <p>Python · SQL · APIs</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section><!-- /page-about -->
+
+
+<!-- ────────────────────────────────────────────────────
+     PAGE: CONTACT
+──────────────────────────────────────────────────── -->
+<section class="page" id="page-contact">
+
+  <div class="page-header">
+    <div class="container">
+      <div class="ph-crumb"><span class="bc-link" data-nav="home">Home</span> / Contact</div>
+      <h1 class="page-title">Get in Touch</h1>
+      <p class="page-sub">Questions, feedback, or partnership enquiries — we respond within 24 hours</p>
+    </div>
+  </div>
+
+  <div class="container contact-layout">
+
+    <!-- Left: info -->
+    <div class="contact-info-col">
+      <h2>Let's connect</h2>
+      <p>Whether you're a learner, employer, or just curious about SkillSpire — reach out anytime.</p>
+
+      <div class="contact-details">
+        <div class="cd-row">
+          <div class="cd-ico">📧</div>
+          <div><strong>Email</strong><p>hello@skillspire.dev</p></div>
+        </div>
+        <div class="cd-row">
+          <div class="cd-ico">📍</div>
+          <div><strong>Location</strong><p>Remote — Worldwide</p></div>
+        </div>
+        <div class="cd-row">
+          <div class="cd-ico">💬</div>
+          <div><strong>Community</strong><p>Discord: SkillSpire</p></div>
+        </div>
+        <div class="cd-row">
+          <div class="cd-ico">⏱</div>
+          <div><strong>Response Time</strong><p>Within 24 hours</p></div>
+        </div>
+      </div>
+
+      <div class="contact-socials">
+        <a class="soc-btn" href="#">𝕏 Twitter</a>
+        <a class="soc-btn" href="#">in LinkedIn</a>
+        <a class="soc-btn" href="#">⌥ GitHub</a>
+      </div>
+
+      <div class="contact-faq">
+        <h3>Common Questions</h3>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Is SkillSpire free to use? <span class="faq-arrow">▾</span></div>
+          <div class="faq-a">Yes! SkillSpire is completely free to browse and enroll. Create an account to track your progress.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">How do I apply for jobs? <span class="faq-arrow">▾</span></div>
+          <div class="faq-a">Log in and visit the Job Board. Click "Apply Now" on any listing — your profile is sent directly to the employer.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Can employers post jobs? <span class="faq-arrow">▾</span></div>
+          <div class="faq-a">Yes! Contact us via this form with the subject "Employer Listing" and we'll set you up with an employer account.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div class="contact-form-col">
+      <div class="contact-form-card">
+        <h3>Send a message</h3>
+        <p style="font-size:.9rem;color:var(--text-secondary);margin-bottom:1.5rem">All fields marked <span class="req">*</span> are required.</p>
+        <form id="contactForm" novalidate>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="cName">Full Name <span class="req">*</span></label>
+              <input type="text" id="cName" name="name" placeholder="Your full name" autocomplete="name" />
+              <span class="ferr" id="errCName"></span>
+            </div>
+            <div class="form-group">
+              <label for="cEmail">Email <span class="req">*</span></label>
+              <input type="email" id="cEmail" name="email" placeholder="you@example.com" autocomplete="email" />
+              <span class="ferr" id="errCEmail"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cSubject">Subject</label>
+            <select id="cSubject" name="subject">
+              <option value="">Select a topic…</option>
+              <option>General Enquiry</option>
+              <option>Technical Support</option>
+              <option>Employer Listing</option>
+              <option>Partnership</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cMessage">Message <span class="req">*</span></label>
+            <textarea id="cMessage" name="message" rows="5" placeholder="Tell us how we can help…"></textarea>
+            <span class="ferr" id="errCMessage"></span>
+          </div>
+          <div class="form-check-row">
+            <input type="checkbox" id="cAgree" />
+            <label for="cAgree">I agree to the <a href="#" style="color:var(--primary)">privacy policy</a> and terms of service.</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="contactBtn">
+            <span class="btn-txt">Send Message</span>
+            <span class="btn-spin hidden">Sending…</span>
+          </button>
+          <div class="form-success hidden" id="contactOK">
+            ✅ Message sent! We'll reply within 24 hours.
+          </div>
+          <div class="ferr" id="errContactGeneral" style="margin-top:.5rem"></div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section><!-- /page-contact -->
+
+
+<!-- ────────────────────────────────────────────────────
+     PAGE: DASHBOARD
+──────────────────────────────────────────────────── -->
+<section class="page" id="page-dashboard">
+
+  <div class="page-header">
+    <div class="container">
+      <div class="ph-crumb"><span class="bc-link" data-nav="home">Home</span> / Dashboard</div>
+      <h1 class="page-title">My Dashboard</h1>
+      <p class="page-sub">Track your progress and celebrate every milestone</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="dash-welcome" id="dashWelcome">Welcome back! 👋</div>
+
+    <!-- Stats -->
+    <div class="dash-stats">
+      <div class="ds-card">
+        <div class="ds-icon">📚</div>
+        <div class="ds-val" id="dSkillCount">0</div>
+        <div class="ds-lbl">Skills Enrolled</div>
+      </div>
+      <div class="ds-card">
+        <div class="ds-icon">📊</div>
+        <div class="ds-val" id="dAvgProg">0%</div>
+        <div class="ds-lbl">Avg. Progress</div>
+      </div>
+      <div class="ds-card">
+        <div class="ds-icon">🏆</div>
+        <div class="ds-val" id="dCompleted">0</div>
+        <div class="ds-lbl">Completed</div>
+      </div>
+      <div class="ds-card">
+        <div class="ds-icon">🔥</div>
+        <div class="ds-val" id="dStreak">7</div>
+        <div class="ds-lbl">Day Streak</div>
+      </div>
+    </div>
+
+    <!-- Progress List -->
+    <div class="dash-sec">
+      <div class="dash-sec-hdr">
+        <h2>Learning Progress</h2>
+        <button class="btn btn-secondary" onclick="navigate('skills')">+ Enroll in Skills</button>
+      </div>
+      <div id="progressList" class="progress-list">
+        <div class="loading-ph">Enroll in skills to see your progress here.</div>
+      </div>
+    </div>
+
+    <!-- Recommended Jobs on Dashboard -->
+    <div class="dash-sec">
+      <div class="dash-sec-hdr">
+        <h2>Recommended Jobs</h2>
+        <button class="btn btn-secondary" onclick="navigate('jobs')">View all jobs →</button>
+      </div>
+      <div id="dashJobs" class="dash-jobs-grid">
+        <div class="loading-ph">Loading recommendations…</div>
+      </div>
+    </div>
+
+  </div>
+</section><!-- /page-dashboard -->
+
+</main><!-- /appMain -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo"><span class="logo-hex">⬡</span> Skill<em>Spire</em></div>
+      <p>Elevating careers through purposeful, structured learning.</p>
+      <div class="footer-socials">
+        <a href="#" class="fso">𝕏</a>
+        <a href="#" class="fso">in</a>
+        <a href="#" class="fso">⌥</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="#" data-nav="skills">Skills Library</a>
+      <a href="#" data-nav="jobs">Job Board</a>
+      <a href="#" data-nav="dashboard">Dashboard</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#" data-nav="about">About Us</a>
+      <a href="#" data-nav="contact">Contact</a>
+      <a href="#">Blog</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      © 2024 SkillSpire. Built with Node.js · Express · MongoDB · HTML5 · CSS3 · JavaScript (ES6+)
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     MODAL: LOGIN
+═══════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <button class="modal-close" onclick="closeModal('loginModal')" aria-label="Close">✕</button>
+    <div class="modal-brand"><span class="logo-hex">⬡</span> SkillSpire</div>
+    <h2 class="modal-title" id="loginTitle">Welcome back</h2>
+    <p class="modal-sub">Sign in to continue your learning journey</p>
+    <form id="loginForm" novalidate>
+      <div class="form-group">
+        <label for="lEmail">Email Address</label>
+        <input type="email" id="lEmail" placeholder="you@example.com" autocomplete="email" />
+        <span class="ferr" id="errLEmail"></span>
+      </div>
+      <div class="form-group">
+        <label for="lPass">Password</label>
+        <div class="pass-wrap">
+          <input type="password" id="lPass" placeholder="Your password" autocomplete="current-password" />
+          <button type="button" class="pass-toggle" onclick="togglePass('lPass',this)" tabindex="-1">👁</button>
+        </div>
+        <span class="ferr" id="errLPass"></span>
+      </div>
+      <div class="ferr-block hidden" id="loginErr"></div>
+      <button type="submit" class="btn btn-primary btn-full" id="loginBtn">
+        <span class="btn-txt">Sign In</span>
+        <span class="btn-spin hidden">Signing in…</span>
+      </button>
+    </form>
+    <p class="modal-foot">Don't have an account? <button class="link-btn" onclick="switchModal('loginModal','signupModal')">Create one free</button></p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     MODAL: SIGNUP
+═══════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="signupModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+    <button class="modal-close" onclick="closeModal('signupModal')" aria-label="Close">✕</button>
+    <div class="modal-brand"><span class="logo-hex">⬡</span> SkillSpire</div>
+    <h2 class="modal-title" id="signupTitle">Start learning today</h2>
+    <p class="modal-sub">Create your free account — no credit card needed</p>
+    <form id="signupForm" novalidate>
+      <div class="form-group">
+        <label for="sName">Full Name</label>
+        <input type="text" id="sName" placeholder="Your full name" autocomplete="name" />
+        <span class="ferr" id="errSName"></span>
+      </div>
+      <div class="form-group">
+        <label for="sEmail">Email Address</label>
+        <input type="email" id="sEmail" placeholder="you@example.com" autocomplete="email" />
+        <span class="ferr" id="errSEmail"></span>
+      </div>
+      <div class="form-group">
+        <label for="sPass">Password</label>
+        <div class="pass-wrap">
+          <input type="password" id="sPass" placeholder="Min. 6 characters" autocomplete="new-password" />
+          <button type="button" class="pass-toggle" onclick="togglePass('sPass',this)" tabindex="-1">👁</button>
+        </div>
+        <span class="ferr" id="errSPass"></span>
+        <div class="pass-strength-bar" id="passStrengthBar" style="display:none">
+          <div class="psb-fill" id="psb"></div>
+          <span class="psb-lbl" id="psbLbl"></span>
+        </div>
+      </div>
+      <div class="ferr-block hidden" id="signupErr"></div>
+      <button type="submit" class="btn btn-primary btn-full" id="signupBtn">
+        <span class="btn-txt">Create Account</span>
+        <span class="btn-spin hidden">Creating…</span>
+      </button>
+    </form>
+    <p class="modal-foot">Already have an account? <button class="link-btn" onclick="switchModal('signupModal','loginModal')">Sign in</button></p>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<!-- JOB APPLY MODAL -->
+<div class="modal-overlay" id="jobApplyModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('jobApplyModal')">✕</button>
+    <h2>Apply for Job</h2>
+
+    <form id="jobApplyForm">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" id="applicantName" required />
+      </div>
+
+      <div class="form-group">
+        <label>Bio</label>
+        <textarea id="applicantBio" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Resume</label>
+        <input type="file" id="applicantResume" accept=".pdf,.doc,.docx" required />
+      </div>
+
+      <input type="hidden" id="jobTitleInput" />
+
+      <button type="submit" class="btn btn-primary btn-full">
+        Submit Application
+      </button>
+    </form>
+  </div>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

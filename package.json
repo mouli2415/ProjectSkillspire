@@ -1,0 +1,10 @@
+{
+  "name": "skillspire",
+  "version": "1.0.0",
+  "description": "SkillSpire — Full-stack skill learning & job platform",
+  "scripts": {
+    "install-deps": "cd backend && npm install",
+    "start": "cd backend && node server.js",
+    "dev": "cd backend && npx nodemon server.js"
+  }
+}
