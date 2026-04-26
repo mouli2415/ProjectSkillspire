@@ -15,7 +15,7 @@ skillspire/
 │   └── js/
 │       └── app.js          ← All JS (ES6+, Fetch API, DOM, events)
 └── backend/
-    ├── server.js           ← Express + Socket.IO + MongoDB entry
+    ├── server.js           ← Express + Socket.IO + MongoDB entry....
     ├── package.json
     ├── routes/
     │   ├── authRoutes.js
