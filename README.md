@@ -1,4 +1,4 @@
-# ⬡ SkillSpire — Elevate Your Career
+# ⬡ SkillSpire — Elevate Your Career-
 
 > A full-stack web application for structured skill learning, progress tracking, and job discovery.
 
